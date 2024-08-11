@@ -4,6 +4,7 @@ namespace App\Controller\Product;
 
 use App\Controller\BaseController;
 use App\Service\Product\ProductProvider;
+use App\Service\Product\ProductViewsCounter;
 use App\Utils\Strings;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -11,10 +12,12 @@ final class ProductController extends BaseController
 {
 
 	private ProductProvider $productProvider;
+	private ProductViewsCounter $productViewsCounter;
 
-	public function __construct(ProductProvider $productProvider)
+	public function __construct(ProductProvider $productProvider, ProductViewsCounter $productViewsCounter)
 	{
 		$this->productProvider = $productProvider;
+		$this->productViewsCounter = $productViewsCounter;
 	}
 
 	public function detail(string $id): Response
@@ -24,6 +27,8 @@ final class ProductController extends BaseController
 		}
 
 		$product = $this->productProvider->getProduct((int) $id);
+
+		$this->productViewsCounter->increaseViewCount((int) $id);
 
 		return $this->json($product);
 	}
