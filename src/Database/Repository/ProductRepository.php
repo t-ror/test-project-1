@@ -2,16 +2,16 @@
 
 namespace App\Database\Repository;
 
-use App\Database\IMySqlDrive;
+use App\Database\IMySqlDriver;
 
 final class ProductRepository implements IRepository
 {
 
-	private IMySqlDrive $mySqlDrive;
+	private IMySqlDriver $mySqlDriver;
 
-	public function __construct(IMySqlDrive $mySqlDrive)
+	public function __construct(IMySqlDriver $mySqlDriver)
 	{
-		$this->mySqlDrive = $mySqlDrive;
+		$this->mySqlDriver = $mySqlDriver;
 	}
 
 	/**
@@ -19,7 +19,7 @@ final class ProductRepository implements IRepository
 	 */
 	public function findById(int $id): array
 	{
-		return $this->mySqlDrive->executeQuery(
+		return $this->mySqlDriver->executeQuery(
 			'SELECT id, name FROM product WHERE product.id = :id',
 			['id' => $id],
 		);

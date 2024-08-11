@@ -8,7 +8,7 @@ namespace App\Database;
  * Kvůli jedonduchosti ponechávám custom connection (drive) do databáze jinak bych využil Doctrine.
  * Metoda jen pro ukázku aby bylo jasné k čemu interface slouží.
  */
-interface IMySqlDrive
+interface IMySqlDriver
 {
 
 	/**

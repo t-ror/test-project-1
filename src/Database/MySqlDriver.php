@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace App\ElasticSearch;
+namespace App\Database;
 
-final class ElasticSearchDrive implements IElasticSearchDrive
+final class MySqlDriver implements IMySqlDriver
 {
 
 	/**

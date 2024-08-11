@@ -2,16 +2,16 @@
 
 namespace App\ElasticSearch\Repository;
 
-use App\ElasticSearch\IElasticSearchDrive;
+use App\ElasticSearch\IElasticSearchDriver;
 
 final class ProductRepository implements IRepository
 {
 
-	private IElasticSearchDrive $elasticSearchDrive;
+	private IElasticSearchDriver $elasticSearchDriver;
 
-	public function __construct(IElasticSearchDrive $elasticSearchDrive)
+	public function __construct(IElasticSearchDriver $elasticSearchDriver)
 	{
-		$this->elasticSearchDrive = $elasticSearchDrive;
+		$this->elasticSearchDriver = $elasticSearchDriver;
 	}
 
 	/**
@@ -19,7 +19,7 @@ final class ProductRepository implements IRepository
 	 */
 	public function findById(int $id): array
 	{
-		return $this->elasticSearchDrive->executeQuery(
+		return $this->elasticSearchDriver->executeQuery(
 			'
 			GET product/_search
 			"match": {

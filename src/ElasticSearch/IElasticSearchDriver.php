@@ -7,7 +7,7 @@ namespace App\ElasticSearch;
 
  * Metoda jen pro ukázku aby bylo jasné k čemu interface slouží.
  */
-interface IElasticSearchDrive
+interface IElasticSearchDriver
 {
 
 	/**
