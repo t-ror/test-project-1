@@ -2,7 +2,14 @@
 {% block title %}Homepage{% endblock %}
 
 {% block body %}
-    <div class="container app-container-main">
-        <p>Symfony project</p>
-    </div>
+	<div class="container app-container-main">
+		<p>Logio - test úkol</p>
+		{% for product in products %}
+			<div>
+				<a href="{{ path('productDetail', {id: product.id}) }}">
+					{{ product.name }}
+				</a> <i>(zobrazeno: {% if product.id in productViewCounts|keys %}{{ productViewCounts[product.id] }}{% else %}0{% endif %})</i>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}
